@@ -23,7 +23,9 @@ def start():
             </footer>
         </body>
     </html>
-    """
+    """, 200, {"X-Server": "sample",
+    "Content-Type": "text/plain; charset=utf-8"
+    }
 
 @app.route("/author")
 def author():
