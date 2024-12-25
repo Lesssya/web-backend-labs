@@ -1,12 +1,15 @@
 from flask import Flask, url_for, redirect
-app = Flask (__name__)
+
+app = Flask(__name__)
+
 
 @app.errorhandler(404)
 def not_found(err):
     return 'нет такой страницы', 404
 
+
 @app.route("/")
-@app.route("/web")
+@app.route("/lab1/web") # Изменен роут /web на /lab1/web
 def start():
     return """
     <!doctype html>
@@ -17,17 +20,18 @@ def start():
             </header>
 
             <h1>web-сервер на flask</h1>
-            <a href="/author">author</a>
+            <a href="/lab1/author">author</a>  #изменен роут /author на /lab1/author
             <footer>
                 &copy; Занозина Олеся, ФБИ-23, 2024
             </footer>
         </body>
     </html>
     """, 200, {"X-Server": "sample",
-    "Content-Type": "text/plain; charset=utf-8"
-    }
+             "Content-Type": "text/plain; charset=utf-8"
+             }
 
-@app.route("/author")
+
+@app.route("/lab1/author")  # Изменен роут /author на /lab1/author
 def author():
     name = "Занозина Олеся Евгеньевна"
     group = "ФБИ-23"
@@ -40,40 +44,57 @@ def author():
         <p>Студент: """ + name + """</p>
         <p>Группа: """ + group + """</p>
         <p>Факультет: """ + faculty + """</p>
-        <a href="/web">web</a>
+        <a href="/lab1/web">web</a>   #изменен роут /web на /lab1/web
     </body>
 </html>
 """
+
+
 @app.route('/lab1/oak')
 def oak():
     path = url_for("static", filename="oak.jpeg")
-    return '''
+    css_path = url_for("static", filename="lab1.css")
+    return f'''
 <!doctype html>
 <html>
+    <head>
+       <link rel="stylesheet" href="{css_path}">
+    </head>
     <body>
         <h1>Дуб</h1>
-        <img src="''' + path + '''">
+        <img src="{path}">
     </body>
 </html>
-'''    
+'''
+
+
 count = 0
+
 
 @app.route('/lab1/counter')
 def counter():
     global count
     count += 1
-    return '''
+    return f'''
 <!doctype html>
 <html>
     <body>
-        Сколько раз вы заходили: ''' + str(count) + '''
+        Сколько раз вы заходили: {count}
+       <a href="{url_for('clear_counter')}">Очистить счётчик</a>
     </body>
 </html>
-''' 
+'''
 
-@app.route('/info')
+@app.route('/lab1/clear_counter')
+def clear_counter():
+    global count
+    count = 0
+    return redirect(url_for('counter'))
+
+@app.route('/lab1/info') # Изменен роут /info на /lab1/info
 def info():
-    return redirect('/author')
+    return redirect('/lab1/author') # Изменен роут /author на /lab1/author
+
 
 @app.route('/lab1/created')
 def created():
