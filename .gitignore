@@ -1,3 +1,7 @@
 venv
+<<<<<<< HEAD
 __pycache__/
 
+=======
+__pycache__/
+>>>>>>> 60df162016aef4d6e01a92e65e199a451d45a4c1
