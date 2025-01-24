@@ -9,13 +9,17 @@ def start():
 
 @app.route('/lab2/example')
 def example():
-    name = 'Олеся Занозина'
-    num_lab = '2'
-    group = 'ФБИ-23'
-    course = '3 курс'
-    
+    name, num_lab, group, course = 'Олеся Занозина', 2, 'ФБИ-23', 3
+    fruits = [
+        {'name': 'яблоки', 'price': 100}, 
+        {'name': 'груши', 'price': 120}, 
+        {'name': 'апельсины', 'price': 80}, 
+        {'name': 'мандарины', 'price': 95}, 
+        {'name': 'манго', 'price': 321},
+    ]
     return render_template ('example.html', num_lab=num_lab, 
-                            name=name, group=group, course=course)
+                            name=name, group=group, course=course,
+                            fruits=fruits)
 
     
 @app.route("/lab1/oak")

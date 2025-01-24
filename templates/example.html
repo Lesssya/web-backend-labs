@@ -16,6 +16,11 @@
         <p> 11 * 28 = {{ 11 * 28 }} </p>
         <p> 8452 / 793 = {{ 8452 / 793 }} </p>
         <p> 45 ** 8 = {{ 45 ** 8 }} </p>
+        <ul>
+            {% for f in fruits %}
+            <li>{{ f.name }}: {{ f.price }} &#8381;</li>
+            {% endfor %}
+        </ul>
     </main>
 
     <footer>
@@ -33,7 +38,7 @@
         {% endif %}
 
         {% if course %}
-            {{ course }},
+            {{ course }} курс,
         {% else %}
             какой-то курс,
         {% endif %}
