@@ -7,6 +7,11 @@ app = Flask(__name__)
 def start():
     return redirect("/menu", code=302)
 
+@app.route('/lab2/')
+def lab2():
+    return render_template('lab2.html')
+
+
 @app.route('/lab2/example')
 def example():
     name, num_lab, group, course = 'Олеся Занозина', 2, 'ФБИ-23', 3
