@@ -11,6 +11,10 @@ def start():
 def lab2():
     return render_template('lab2.html')
 
+@app.route('/lab2/berries')
+def berries():
+    return render_template('berries.html')
+
 
 @app.route('/lab2/example')
 def example():
