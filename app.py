@@ -10,11 +10,12 @@ def start():
 @app.route('/lab2/example')
 def example():
     name = 'Олеся Занозина'
-    number = '2'
+    num_lab = '2'
     group = 'ФБИ-23'
-    course = '3'
-    return render_template('example.html', name=name, number=number, 
-                           group=group, course=course )
+    course = '3 курс'
+    
+    return render_template ('example.html', num_lab=num_lab, 
+                            name=name, group=group, course=course)
 
     
 @app.route("/lab1/oak")
