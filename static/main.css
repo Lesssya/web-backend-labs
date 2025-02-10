@@ -35,3 +35,12 @@ img {
 .error {
     color: red;
 }
+
+button {
+    color: rgb(10, 10, 10);
+    background-color: rgb(211, 178, 225);
+    padding: 5px 15px;
+    border-radius: 15px;
+    border-color: #000000;
+    font-size: 15px;
+  }

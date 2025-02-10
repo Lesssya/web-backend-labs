@@ -41,3 +41,37 @@ def form1():
     return render_template('lab3/form1.html', user=user, age=age, sex=sex, errors=errors)
 
 
+@lab3.route('/lab3/order', methods=['GET', 'POST'])
+def order():
+    if request.method == 'POST':
+        drink = request.form.get('drink')
+        price = 0
+
+        # Пусть кофе стоит 120 рублей, черный чай - 80 рублей, зеленый - 70 рублей.
+        if drink == 'coffe':
+            price = 120
+        elif drink == 'black-tea':
+            price = 80
+        else:
+            price = 70
+
+        # Добавка молока удорожает напиток на 30 рублей, а сахара на 10.
+        if request.form.get('milk') == 'on':
+            price += 30
+        if request.form.get('sugar') == 'on':
+            price += 10
+
+        return redirect(f'/lab3/success?price={price}')
+
+    return render_template('lab3/order.html')
+
+
+@lab3.route('/lab3/pay', methods=['GET', 'POST'])
+def pay():
+    return render_template('lab3/pay.html')
+
+
+@lab3.route('/lab3/success', methods=['GET'])
+def success():
+    price = request.args.get('price', type=int)
+    return render_template('lab3/success.html', price=price)
