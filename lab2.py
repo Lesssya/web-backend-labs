@@ -3,12 +3,12 @@ lab2 = Blueprint('lab2',__name__)
 
 @lab2.route('/lab2/')
 def lab():
-    return render_template('lab2.html')
+    return render_template('lab2/lab2.html')
 
 
 @lab2.route('/lab2/berries')
 def berries():
-    return render_template('berries.html')
+    return render_template('lab2/berries.html')
 
 
 @lab2.route('/lab2/example')
@@ -33,6 +33,6 @@ def example():
         {'author': 'Виктор Мари Гюго', 'name_book': 'Отверженные', 'style': 'Трагедия', 'num_page': '1871'},
         {'author': 'Антуан де Сент-Экзюпери', 'name_book': 'Маленький принц', 'style': 'Философская сказка', 'num_page': '78'},
     ]
-    return render_template ('example.html', num_lab=num_lab, 
+    return render_template ('lab2/example.html', num_lab=num_lab, 
                             name=name, group=group, course=course,
                             fruits=fruits, book=book)

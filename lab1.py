@@ -8,11 +8,11 @@ def WEB():
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="''' + url_for('static', filename='lab1.css') + '''">
+        <link rel="stylesheet" href="''' + url_for('static', filename='lab1/lab1.css') + '''">
     </head>
     <body>
         <h1>Для чего нужно веб-программирование</h1>
-        <img src="'''+url_for('static', filename='WEB.png')+'''">
+        <img src="'''+url_for('static', filename='lab1/WEB.png')+'''">
         <p>
             <b>Веб-программирование</b> — это процесс создания веб-сайтов и веб-приложений, которые работают в интернете. 
             Оно позволяет разработчикам создавать интерактивные, динамичные и функциональные платформы, которые 
@@ -40,7 +40,7 @@ def lab():
     <html>
         <head>
         <title>Занозина Олеся Евгеньевна, Лабораторная 1</title>
-        <link rel="stylesheet" href="''' + url_for('static', filename='lab1.css') + '''">
+        <link rel="stylesheet" href="''' + url_for('static', filename='lab1/lab1.css') + '''">
         </head>
 
         <body>
@@ -88,11 +88,11 @@ def oak():
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="''' + url_for('static', filename='lab1.css') + '''">
+        <link rel="stylesheet" href="''' + url_for('static', filename='lab1/lab1.css') + '''">
     </head>
     <body>
         <h1>Дуб</h1>
-        <img src="'''+url_for('static', filename='oak.jpeg')+'''">
+        <img src="'''+url_for('static', filename='lab1/oak.jpeg')+'''">
     </body>
 </html>
 '''
@@ -104,11 +104,11 @@ def student():
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="''' + url_for('static', filename='lab1.css') + '''">
+        <link rel="stylesheet" href="''' + url_for('static', filename='lab1/lab1.css') + '''">
     </head>
     <body>
         <h1>Занозина Олеся Евгеньевна</h1>
-        <img src="'''+url_for('static', filename='NETI.jpg')+'''">
+        <img src="'''+url_for('static', filename='lab1/NETI.jpg')+'''">
     </body>
 </html>
 '''
@@ -120,11 +120,11 @@ def python():
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="''' + url_for('static', filename='lab1.css') + '''">
+        <link rel="stylesheet" href="''' + url_for('static', filename='lab1/lab1.css') + '''">
     </head>
     <body>
         <h1>Преимущества: чем хорош Python</h1>
-        <img src="'''+url_for('static', filename='python.jpeg')+'''">
+        <img src="'''+url_for('static', filename='lab1/python.jpeg')+'''">
         <p>
         Специалисты выделяют массу преимуществ Python — остановимся на ключевых из них.
         <b>Простота синтаксиса, а значит — низкий порог вхождения.</b> 
