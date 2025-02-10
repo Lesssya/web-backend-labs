@@ -31,3 +31,7 @@ img {
     margin: 20px auto;
     border-radius: 10px;
   }
+
+.error {
+    color: red;
+}
