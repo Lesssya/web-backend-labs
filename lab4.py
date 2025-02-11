@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, session
+from flask import Blueprint, render_template, request, redirect, session, url_for
 lab4 = Blueprint('lab4', __name__)
 
 
@@ -126,14 +126,11 @@ def tree():
 
 
 users = [
-    {'login': 'alex', 'password': '123'},
-    {'login': 'bob', 'password': '555'},
-    {'login': 'olesya', 'password': 'olesya0802'},
-    {'login': 'lessya', 'password': 'zan2004'},
+
     {'login': 'alex', 'password': '123', 'name': 'Алексей Петров', 'gender': 'мужчина'},
     {'login': 'bob', 'password': '555', 'name': 'Боб Иванов', 'gender': 'мужчина'},
     {'login': 'olesya', 'password': 'olesya0802', 'name': 'Олеся Занозина', 'gender': 'женщина'},
-    {'login': 'lessya', 'password': 'zan2004', 'name': 'Олеся Иванченко', 'gender': 'женщина'},
+    {'login': 'lessya', 'password': 'zan2004', 'name': 'Леся Иванова', 'gender': 'женщина'},
 ]
 
 
@@ -146,8 +143,7 @@ def login():
             for user in users:
                 if user['login'] == login:
                     name = user['name'] 
-                    return render_template('/lab4/login.html', authorized=authorized, 
-                                           login=login, name=name)
+                    return render_template('/lab4/login.html', authorized=authorized, login=login, name=name)
         else:
             authorized = False
             login = ''
@@ -177,3 +173,27 @@ def logout():
     session.pop('login', None)
     return redirect('/lab4/login')
 
+
+@lab4.route('/lab4/fridge', methods=['GET', 'POST'])
+def fridge():
+    error = None
+    temperature = None
+    snowflakes = None
+
+    if request.method == "POST":
+        temperature = float(request.form["temperature"])
+        if temperature is None:
+            error = "Ошибка: не задана температура"
+        elif temperature < -12:
+            error = "Не удалось установить температуру — слишком низкое значение"
+        elif temperature > -1:
+            error = "Не удалось установить температуру — слишком высокое значение"
+        else:
+            if -12 <= temperature <= -9:
+                snowflakes = 3
+            elif -8 <= temperature <= -5:
+                snowflakes = 2
+            elif -4 <= temperature <= -1:
+                snowflakes = 1
+
+    return render_template('/lab4/fridge.html', error=error, temperature=temperature, snowflakes=snowflakes)
