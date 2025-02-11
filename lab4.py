@@ -118,8 +118,8 @@ def tree():
     
     
 
-    return render_template('lab4/tree.html', tree_count=tree_count)
-    
+    #return render_template('lab4/tree.html', tree_count=tree_count)
+    return redirect ('lab4/tree')
 
 
 
