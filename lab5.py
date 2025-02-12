@@ -25,23 +25,15 @@ def list_articles():
     login = session.get('login')
     if not login:
         return redirect('/lab5/login')
-    
-    if request.method == 'GET':
-        return render_template('lab5/create.html')
-    
-    title = request.form.get('title')
-    article_text = request.form.get('article_text')
-    
     conn, cur = db_connect()
+    cur.execute(f"SELECT id FROM users WHERE login='{login}'")
+    user_id = cur.fetchone()["id"]
     
-    cur.execute("SELECT * FROM users WHERE login=%s;", (login,))
-    
-    login_id = cur.fetchone()["id"]
-    cur.execute(f"INSERT INTO articles(user_id, title, article_text) VALUES ({login_id}, '{title}', '{article_text}')")
+    cur.execute(f"SELECT * FROM articles WHERE user_id='{user_id}';")
+    articles = cur.fetchall()
     
     db_close(conn, cur)
-    return redirect('/lab5')
-
+    return render_template('/lab5/articles.html', articles=articles)
 
 @lab5.route('/lab5/create', methods = ['GET', 'POST'])
 def create_article():
