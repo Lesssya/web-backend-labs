@@ -6,6 +6,7 @@ from lab4 import lab4
 from lab5 import lab5
 
 app = Flask(__name__)
+app.config['DB_TYPE'] = 'postgres'
 
 app.secret_key = 'секретный секрет'
 
