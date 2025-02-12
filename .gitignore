@@ -3,3 +3,5 @@ __pycache__
 RGZ.py
 RGZ
 papka
+.env
+database.db
